@@ -1,25 +1,20 @@
-const C = 'khp2';
+const C = 'khp3';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 
 self.addEventListener('fetch', e => {
-  const req = e.request;
-  if (req.method !== 'GET') return;
-  const url = new URL(req.url);
-  if (url.origin !== location.origin) return;
+  const r = e.request;
+  if (r.method !== 'GET') return;
+  if (new URL(r.url).origin !== location.origin) return;
 
-  if (req.mode === 'navigate') {
+  if (r.mode === 'navigate') {
     e.respondWith(
-      fetch(req)
-        .then(r => { caches.open(C).then(c => c.put(req, r.clone())); return r; })
-        .catch(() => caches.match(req).then(r => r || caches.match('./')))
+      fetch(r).then(x => { caches.open(C).then(c => c.put(r, x.clone())); return x; })
+              .catch(() => caches.match(r).then(x => x || caches.match('./')))
     );
     return;
   }
-
   e.respondWith(
-    caches.match(req).then(hit =>
-      hit || fetch(req).then(r => { caches.open(C).then(c => c.put(req, r.clone())); return r; })
-    )
+    caches.match(r).then(hit => hit || fetch(r).then(x => { caches.open(C).then(c => c.put(r, x.clone())); return x; }))
   );
 });
