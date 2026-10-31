@@ -1,0 +1,63 @@
+
+
+<div class="screen" id="join">
+  <div class="inner">
+    <div class="logo">Kahoot<span>+</span></div>
+    <div class="sub">answer finder</div>
+    <div class="card stack">
+      <input id="pin" inputmode="numeric" pattern="[0-9]*" maxlength="9" placeholder="Game PIN" autocapitalize="off" spellcheck="false">
+      <input id="nick" maxlength="15" placeholder="Nickname" autocapitalize="off" spellcheck="false">
+      <button class="btn primary" id="go">Enter</button>
+      <div class="err" id="err"></div>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="game">
+  <div class="top">
+    <span class="pin" id="hpin">------</span>
+    <span class="score" id="hscore"></span>
+    <button class="gear" id="gear" aria-label="Settings">⚙</button>
+  </div>
+  <div class="badge" id="badge"></div>
+  <div class="qwrap" id="qwrap"></div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<div id="backdrop"></div>
+<div id="sheet">
+  <div class="sheetTop">
+    <h3>Settings</h3>
+    <button class="x">Done</button>
+  </div>
+
+  <div class="row">
+    <div class="txt"><b>Highlight answers</b><small>Auto-marks the correct option when the quiz is identified.</small></div>
+    <button class="sw" id="swHL" aria-label="Highlight answers"></button>
+  </div>
+
+  <div class="row">
+    <div class="txt"><b>AI fallback</b><small>Uses your AI key when the quiz can't be identified.</small></div>
+    <button class="sw" id="swAI" aria-label="AI fallback"></button>
+  </div>
+
+  <div class="field">
+    <label for="prov">Provider</label>
+    <select id="prov">
+      <option value="groq">Groq (fastest, free)</option>
+      <option value="gemini">Google Gemini (free)</option>
+      <option value="openrouter">OpenRouter (free models)</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="key">API key</label>
+    <input id="key" type="password" placeholder="paste key here" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <small>Stored only on this device.</small>
+  </div>
+
+  <div class="hint">Groq: console.groq.com → API Keys → Create. Gemini: aistudio.google.com/apikey.</div>
+</div>
+
+
+
