@@ -20,8 +20,9 @@ input,select{font-family:inherit}
 .v{flex:1;min-height:0;display:none;flex-direction:column}
 body[data-v="join"] #vJoin{display:flex}
 body[data-v="game"] #vGame{display:flex}
-#vJoin{overflow-y:auto;padding:22px 20px;-webkit-overflow-scrolling:touch}
+#vJoin{position:relative;overflow-y:auto;padding:60px 20px 22px;-webkit-overflow-scrolling:touch}
 #vJoin .in{width:100%;max-width:330px;margin:auto;display:flex;flex-direction:column;gap:14px;align-items:center}
+.corner{position:absolute;top:12px;right:12px}
 .mk{width:70px;height:70px;border-radius:21px;display:grid;place-items:center;background:linear-gradient(150deg,#7b2ff7,#ff2e63);box-shadow:0 16px 34px rgba(123,47,247,.5)}
 .mk svg{width:32px;height:32px}
 .lg{font-size:clamp(30px,8.5vw,38px);font-weight:900;letter-spacing:-1.6px;line-height:1;background:linear-gradient(96deg,#fff 20%,#ffd400 55%,#22e0ff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -83,8 +84,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
 .dn p{color:#9a86bd;font-size:13px;margin:0 0 20px}
 #veil{position:fixed;inset:0;background:rgba(3,1,9,.7);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
 #veil.on{opacity:1;pointer-events:auto}
-.pn{position:fixed;inset:0;z-index:50;background:#10061f;transform:translateY(100%);transition:transform .26s cubic-bezier(.2,.9,.3,1);overflow-y:auto;padding:calc(14px + env(safe-area-inset-top)) 18px calc(30px + env(safe-area-inset-bottom))}
-.pn.on{transform:translateY(0)}
+.pn{position:fixed;inset:0;z-index:50;background:#10061f;transform:translateY(103%);visibility:hidden;transition:transform .26s cubic-bezier(.2,.9,.3,1),visibility .26s;overflow-y:auto;padding:calc(14px + env(safe-area-inset-top)) 18px calc(30px + env(safe-area-inset-bottom))}
+.pn.on{transform:translateY(0);visibility:visible}
 @media(min-width:540px){.pn{width:424px;left:50%;margin-left:-212px;top:auto;bottom:20px;height:min(860px,calc(100dvh - 40px));border-radius:30px;border:1px solid #33204f}}
 .ph{display:flex;align-items:center;margin-bottom:16px}
 .ph h2{margin:0;font-size:19px;font-weight:900}
@@ -131,6 +132,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
 <div id="app" style="display:flex;flex-direction:column">
 
 <div class="v" id="vJoin">
+  <button class="ic corner" id="bStJ" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
   <div class="in">
     <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"><path d="M12 4 3 20h18L12 4z"/></svg></div>
     <div class="lg">Kahoot+</div>
@@ -202,7 +204,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
 <script>
 "use strict";
 var D={hl:true,aa:false,dly:600,ai:false,cg:false,cgM:70,prov:"groq",key:"",rl:""};
-function ls(){try{return Object.assign({},D,JSON.parse(localStorage.getItem("kh6")||"{}"))}catch(e){return Object.assign({},D)}}
+function ls(){try{return Object.assign({},D,JSON.parse(localStorage.getItem("kh7")||"{}"))}catch(e){return Object.assign({},D)}}
 var S={s:ls(),pin:"",nick:"",ws:null,deck:null,qI:-1,qId:0,ans:false,inG:false,tr:0,tm:null,aa:null,hist:[]};
 function $(i){return document.getElementById(i)}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
@@ -214,7 +216,7 @@ function paint(){
   $("dly").value=S.s.dly;$("dlyV").textContent=(S.s.dly/1000).toFixed(1)+"s";
   $("cg").value=S.s.cgM;$("cgV").textContent=S.s.cgM+"%";
 }
-function save(){try{localStorage.setItem("kh6",JSON.stringify(S.s))}catch(e){}}
+function save(){try{localStorage.setItem("kh7",JSON.stringify(S.s))}catch(e){}}
 $("swHL").onclick=function(){S.s.hl=!S.s.hl;paint();save();redraw()};
 $("swAA").onclick=function(){S.s.aa=!S.s.aa;paint();save();redraw()};
 $("swAI").onclick=function(){S.s.ai=!S.s.ai;paint();save()};
@@ -227,6 +229,7 @@ $("rl").oninput=function(e){S.s.rl=e.target.value.trim().replace(/\/$/,"");save(
 function openP(id){$(id).classList.add("on");$("veil").classList.add("on");$(id).scrollTop=0;paint()}
 function closeP(){["pSt","pDk"].forEach(function(i){$(i).classList.remove("on")});$("veil").classList.remove("on")}
 $("bSt").onclick=function(){openP("pSt");stats()};
+$("bStJ").onclick=function(){openP("pSt");stats()};
 $("bDk").onclick=function(){openP("pDk");deckView()};
 $("cSt").onclick=closeP;$("cDk").onclick=closeP;$("veil").onclick=closeP;
 
@@ -285,7 +288,7 @@ function ai(q,ch){
 function join(){
   var pin=$("pin").value.replace(/\D/g,""),n=$("nick").value.trim();
   $("err").textContent="";
-  if(!S.s.rl){$("err").textContent="Set your Worker URL in settings first";return}
+  if(!S.s.rl){$("err").textContent="Tap the gear and add your Worker URL";return}
   if(pin.length<4){$("err").textContent="Enter the game PIN";return}
   if(!n){$("err").textContent="Enter a nickname";return}
   S.pin=pin;S.nick=n;S.deck=null;S.qI=-1;S.hist=[];S.tr=0;S.inG=true;
