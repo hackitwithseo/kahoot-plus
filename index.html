@@ -20,24 +20,37 @@ input,select{font-family:inherit}
 .v{flex:1;min-height:0;display:none;flex-direction:column}
 body[data-v="join"] #vJoin{display:flex}
 body[data-v="game"] #vGame{display:flex}
-#vJoin{position:relative;overflow-y:auto;padding:60px 20px 22px;-webkit-overflow-scrolling:touch}
-#vJoin .in{width:100%;max-width:330px;margin:auto;display:flex;flex-direction:column;gap:14px;align-items:center}
-.corner{position:absolute;top:12px;right:12px}
-.mk{width:70px;height:70px;border-radius:21px;display:grid;place-items:center;background:linear-gradient(150deg,#7b2ff7,#ff2e63);box-shadow:0 16px 34px rgba(123,47,247,.5)}
-.mk svg{width:32px;height:32px}
-.lg{font-size:clamp(30px,8.5vw,38px);font-weight:900;letter-spacing:-1.6px;line-height:1;background:linear-gradient(96deg,#fff 20%,#ffd400 55%,#22e0ff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.tg{font-size:10.5px;letter-spacing:3.4px;text-transform:uppercase;color:#9a86bd;font-weight:800;margin-top:-8px}
-.glass{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);border-radius:20px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
-.card{width:100%;padding:16px;display:flex;flex-direction:column;gap:10px}
-.lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9a86bd;font-weight:800;padding-left:3px}
-input{width:100%;background:rgba(0,0,0,.32);border:1.5px solid rgba(255,255,255,.14);border-radius:13px;padding:14px;font-size:16px;font-weight:700;color:#fff;outline:none}
-input:focus{border-color:#22e0ff}
-input::placeholder{color:rgba(255,255,255,.28);font-weight:500}
-#pin{font-size:24px;letter-spacing:5px;text-align:center;font-variant-numeric:tabular-nums}
-.btn{border-radius:13px;padding:16px;font-size:16px;font-weight:800;cursor:pointer;background:rgba(255,255,255,.09);color:#fff;width:100%;transition:transform .1s}
+#vJoin{overflow-y:auto;padding:22px 20px;-webkit-overflow-scrolling:touch}
+#vJoin .in{width:100%;max-width:330px;margin:auto;display:flex;flex-direction:column;gap:13px;align-items:center}
+.mk{width:64px;height:64px;border-radius:19px;display:grid;place-items:center;background:linear-gradient(150deg,#7b2ff7,#ff2e63);box-shadow:0 16px 34px rgba(123,47,247,.5)}
+.mk svg{width:29px;height:29px}
+.lg{font-size:clamp(28px,8vw,36px);font-weight:900;letter-spacing:-1.6px;line-height:1;background:linear-gradient(96deg,#fff 20%,#ffd400 55%,#22e0ff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tg{font-size:10px;letter-spacing:3.4px;text-transform:uppercase;color:#9a86bd;font-weight:800;margin-top:-7px}
+.glass{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.card{width:100%;padding:15px;display:flex;flex-direction:column;gap:9px}
+.lbl{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#9a86bd;font-weight:800;padding-left:3px;margin-top:2px}
+.lbl:first-child{margin-top:0}
+input,select{width:100%;background:rgba(0,0,0,.32);border:1.5px solid rgba(255,255,255,.14);border-radius:12px;padding:13px;font-size:16px;font-weight:700;color:#fff;outline:none;transition:border-color .15s}
+select{font-weight:600;font-size:15px}
+input:focus,select:focus{border-color:#22e0ff}
+input::placeholder{color:rgba(255,255,255,.26);font-weight:500}
+input.good{border-color:#2ee06a}
+#pin{font-size:23px;letter-spacing:5px;text-align:center;font-variant-numeric:tabular-nums}
+.btn{border-radius:12px;padding:15px;font-size:16px;font-weight:800;cursor:pointer;background:rgba(255,255,255,.09);color:#fff;width:100%;transition:transform .1s}
 .btn:active{transform:scale(.975)}
 .btn.go{background:linear-gradient(96deg,#7b2ff7,#ff2e63);box-shadow:0 12px 26px rgba(255,46,99,.36)}
-.err{color:#ff90a8;font-size:12.5px;font-weight:700;text-align:center;min-height:15px}
+.err{color:#ff90a8;font-size:12px;font-weight:700;text-align:center;min-height:14px}
+.sep{display:flex;align-items:center;gap:10px;width:100%;margin:3px 0}
+.sep i{flex:1;height:1px;background:rgba(255,255,255,.12)}
+.sep span{font-size:9.5px;letter-spacing:2.4px;text-transform:uppercase;color:#6f5c8f;font-weight:800}
+.remrow{display:flex;align-items:center;gap:10px;padding-top:4px}
+.remrow .t{flex:1;min-width:0}
+.remrow .t b{display:block;font-size:13px}
+.remrow .t small{display:block;font-size:10.5px;color:#9a86bd;margin-top:2px;line-height:1.4}
+.sw{flex:0 0 48px;height:29px;border-radius:15px;background:rgba(255,255,255,.16);position:relative;cursor:pointer;transition:background .18s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:23px;height:23px;border-radius:50%;background:#fff;transition:transform .18s}
+.sw.on{background:linear-gradient(96deg,#7b2ff7,#2ee06a)}
+.sw.on::after{transform:translateX(19px)}
 #vGame{overflow:hidden}
 .bar{display:flex;align-items:center;gap:9px;padding:12px 14px}
 .chip{font-size:12px;font-weight:800;letter-spacing:1.6px;padding:7px 11px;border-radius:9px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.14);font-variant-numeric:tabular-nums}
@@ -84,8 +97,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
 .dn p{color:#9a86bd;font-size:13px;margin:0 0 20px}
 #veil{position:fixed;inset:0;background:rgba(3,1,9,.7);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
 #veil.on{opacity:1;pointer-events:auto}
-.pn{position:fixed;inset:0;z-index:50;background:#10061f;transform:translateY(103%);visibility:hidden;transition:transform .26s cubic-bezier(.2,.9,.3,1),visibility .26s;overflow-y:auto;padding:calc(14px + env(safe-area-inset-top)) 18px calc(30px + env(safe-area-inset-bottom))}
-.pn.on{transform:translateY(0);visibility:visible}
+.pn{position:fixed;inset:0;z-index:50;background:#10061f;transform:translateY(120%);visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.2,.9,.3,1),visibility .26s;overflow-y:auto;padding:calc(14px + env(safe-area-inset-top)) 18px calc(30px + env(safe-area-inset-bottom))}
+.pn.on{transform:translateY(0);visibility:visible;pointer-events:auto}
 @media(min-width:540px){.pn{width:424px;left:50%;margin-left:-212px;top:auto;bottom:20px;height:min(860px,calc(100dvh - 40px));border-radius:30px;border:1px solid #33204f}}
 .ph{display:flex;align-items:center;margin-bottom:16px}
 .ph h2{margin:0;font-size:19px;font-weight:900}
@@ -96,14 +109,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
 .rw .t{flex:1;min-width:0}
 .rw .t b{display:block;font-size:13.5px}
 .rw .t small{display:block;font-size:11px;color:#9a86bd;margin-top:3px;line-height:1.45}
-.sw{flex:0 0 50px;height:30px;border-radius:16px;background:rgba(255,255,255,.16);position:relative;cursor:pointer;transition:background .18s}
-.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .18s}
-.sw.on{background:linear-gradient(96deg,#7b2ff7,#2ee06a)}
-.sw.on::after{transform:translateX(20px)}
 .fd{padding:13px 0}
 .fd label{font-size:12px;font-weight:800;display:block;margin-bottom:7px}
-.fd small{display:block;font-size:10.5px;color:#9a86bd;margin-top:6px;line-height:1.5}
-.fd select{width:100%;background:rgba(0,0,0,.35);border:1.5px solid rgba(255,255,255,.14);border-radius:11px;padding:12px;font-size:15px;color:#fff;outline:none}
 .rg{display:flex;align-items:center;gap:11px}
 .rg input[type=range]{flex:1}
 .rg b{font-size:13px;font-weight:900;color:#ffd400;width:50px;text-align:right}
@@ -132,11 +139,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
 <div id="app" style="display:flex;flex-direction:column">
 
 <div class="v" id="vJoin">
-  <button class="ic corner" id="bStJ" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
   <div class="in">
     <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"><path d="M12 4 3 20h18L12 4z"/></svg></div>
     <div class="lg">Kahoot+</div>
     <div class="tg">answer engine</div>
+
     <div class="glass card">
       <div class="lbl">Game PIN</div>
       <input id="pin" inputmode="numeric" maxlength="9" placeholder="000000" autocapitalize="off" autocorrect="off" spellcheck="false">
@@ -144,6 +151,25 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
       <input id="nick" maxlength="15" placeholder="your name" autocapitalize="off" autocorrect="off" spellcheck="false">
       <button class="btn go" id="go">Enter Game</button>
       <div class="err" id="err"></div>
+    </div>
+
+    <div class="sep"><i></i><span>connection</span><i></i></div>
+
+    <div class="glass card">
+      <div class="lbl">Worker URL</div>
+      <input id="rl" placeholder="https://kahoot-relay.you.workers.dev" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <div class="lbl">AI provider</div>
+      <select id="prov">
+        <option value="groq">Groq - fastest, free</option>
+        <option value="gemini">Google Gemini - free</option>
+        <option value="openrouter">OpenRouter - free models</option>
+      </select>
+      <div class="lbl">API key</div>
+      <input id="key" type="password" placeholder="paste key" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <div class="remrow">
+        <div class="t"><b>Remember me</b><small>Keep the key saved on this device</small></div>
+        <button class="sw" id="swRM"></button>
+      </div>
     </div>
   </div>
 </div>
@@ -166,29 +192,14 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
 <div id="veil"></div>
 
 <div class="pn" id="pSt">
-  <div class="ph"><h2>Settings</h2><button class="btn" id="cSt">Done</button></div>
+  <div class="ph"><h2>Cheats</h2><button class="btn" id="cSt">Done</button></div>
 
-  <div class="sc2">Relay</div>
-  <div class="fd">
-    <label for="rl">Worker URL</label>
-    <input id="rl" placeholder="https://kahoot-relay.you.workers.dev" autocapitalize="off" autocorrect="off" spellcheck="false">
-    <small>Required. Without it nothing connects.</small>
-  </div>
-
-  <div class="sc2">Cheats</div>
   <div class="rw"><div class="t"><b>Highlight answers</b><small>Marks the correct option instantly.</small></div><button class="sw" id="swHL"></button></div>
   <div class="rw"><div class="t"><b>Auto-answer</b><small>Submits for you. Tap to cancel.</small></div><button class="sw" id="swAA"></button></div>
-  <div class="fd"><label>Auto-answer delay</label><div class="rg"><input type="range" id="dly" min="0" max="4000" step="100" value="600"><b id="dlyV">0.6s</b></div><small>0.5-1s keeps the speed bonus without looking robotic.</small></div>
+  <div class="fd"><label>Auto-answer delay</label><div class="rg"><input type="range" id="dly" min="0" max="4000" step="100" value="600"><b id="dlyV">0.6s</b></div></div>
   <div class="rw"><div class="t"><b>AI fallback</b><small>Used when the quiz can't be identified.</small></div><button class="sw" id="swAI"></button></div>
   <div class="rw"><div class="t"><b>Confidence gate</b><small>Only auto-submit AI picks above the threshold.</small></div><button class="sw" id="swCG"></button></div>
   <div class="fd"><label>Minimum confidence</label><div class="rg"><input type="range" id="cg" min="0" max="95" step="5" value="70"><b id="cgV">70%</b></div></div>
-
-  <div class="sc2">AI provider</div>
-  <div class="fd"><label for="prov">Provider</label><select id="prov">
-    <option value="groq">Groq - fastest, free</option>
-    <option value="gemini">Google Gemini - free</option>
-    <option value="openrouter">OpenRouter - free models</option></select></div>
-  <div class="fd"><label for="key">API key</label><input id="key" type="password" placeholder="paste key" autocapitalize="off" autocorrect="off" spellcheck="false"><small>Stored on this device only.</small></div>
 
   <div class="sc2">Session</div>
   <div class="sts"><div class="st"><b id="stA">0</b><small>Answers</small></div><div class="st"><b id="stC">0</b><small>Correct</small></div><div class="st"><b id="stP">-</b><small>Accuracy</small></div></div>
@@ -203,8 +214,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:25px;heigh
 
 <script>
 "use strict";
-var D={hl:true,aa:false,dly:600,ai:false,cg:false,cgM:70,prov:"groq",key:"",rl:""};
-function ls(){try{return Object.assign({},D,JSON.parse(localStorage.getItem("kh7")||"{}"))}catch(e){return Object.assign({},D)}}
+var D={hl:true,aa:false,dly:600,ai:false,cg:false,cgM:70,prov:"groq",key:"",rl:"",rm:true};
+function ls(){try{return Object.assign({},D,JSON.parse(localStorage.getItem("kh8")||"{}"))}catch(e){return Object.assign({},D)}}
 var S={s:ls(),pin:"",nick:"",ws:null,deck:null,qI:-1,qId:0,ans:false,inG:false,tr:0,tm:null,aa:null,hist:[]};
 function $(i){return document.getElementById(i)}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
@@ -212,24 +223,38 @@ function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return
 function paint(){
   $("swHL").classList.toggle("on",!!S.s.hl);$("swAA").classList.toggle("on",!!S.s.aa);
   $("swAI").classList.toggle("on",!!S.s.ai);$("swCG").classList.toggle("on",!!S.s.cg);
-  $("prov").value=S.s.prov;$("key").value=S.s.key;$("rl").value=S.s.rl;
+  $("swRM").classList.toggle("on",!!S.s.rm);
+  $("prov").value=S.s.prov;
+  $("rl").value=S.s.rl;
+  $("rl").classList.toggle("good",!!S.s.rl);
+  $("key").value=S.s.key;
   $("dly").value=S.s.dly;$("dlyV").textContent=(S.s.dly/1000).toFixed(1)+"s";
   $("cg").value=S.s.cgM;$("cgV").textContent=S.s.cgM+"%";
 }
-function save(){try{localStorage.setItem("kh7",JSON.stringify(S.s))}catch(e){}}
+function save(){
+  try{
+    var o=Object.assign({},S.s);
+    if(!S.s.rm) o.key="";
+    localStorage.setItem("kh8",JSON.stringify(o));
+  }catch(e){}
+}
 $("swHL").onclick=function(){S.s.hl=!S.s.hl;paint();save();redraw()};
 $("swAA").onclick=function(){S.s.aa=!S.s.aa;paint();save();redraw()};
 $("swAI").onclick=function(){S.s.ai=!S.s.ai;paint();save()};
 $("swCG").onclick=function(){S.s.cg=!S.s.cg;paint();save()};
+$("swRM").onclick=function(){S.s.rm=!S.s.rm;paint();save()};
 $("dly").oninput=function(e){S.s.dly=+e.target.value;paint();save()};
 $("cg").oninput=function(e){S.s.cgM=+e.target.value;paint();save()};
 $("prov").onchange=function(e){S.s.prov=e.target.value;save()};
 $("key").oninput=function(e){S.s.key=e.target.value.trim();save()};
-$("rl").oninput=function(e){S.s.rl=e.target.value.trim().replace(/\/$/,"");save()};
+$("rl").oninput=function(e){
+  S.s.rl=e.target.value.trim().replace(/\/$/,"");
+  $("rl").classList.toggle("good",!!S.s.rl);
+  save();
+};
 function openP(id){$(id).classList.add("on");$("veil").classList.add("on");$(id).scrollTop=0;paint()}
 function closeP(){["pSt","pDk"].forEach(function(i){$(i).classList.remove("on")});$("veil").classList.remove("on")}
 $("bSt").onclick=function(){openP("pSt");stats()};
-$("bStJ").onclick=function(){openP("pSt");stats()};
 $("bDk").onclick=function(){openP("pDk");deckView()};
 $("cSt").onclick=closeP;$("cDk").onclick=closeP;$("veil").onclick=closeP;
 
@@ -288,7 +313,7 @@ function ai(q,ch){
 function join(){
   var pin=$("pin").value.replace(/\D/g,""),n=$("nick").value.trim();
   $("err").textContent="";
-  if(!S.s.rl){$("err").textContent="Tap the gear and add your Worker URL";return}
+  if(!S.s.rl){$("err").textContent="Paste your Worker URL below first";return}
   if(pin.length<4){$("err").textContent="Enter the game PIN";return}
   if(!n){$("err").textContent="Enter a nickname";return}
   S.pin=pin;S.nick=n;S.deck=null;S.qI=-1;S.hist=[];S.tr=0;S.inG=true;
